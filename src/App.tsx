@@ -8,8 +8,6 @@ function App() {
   const [posicionApiradora, setPosicionAspiradora] = useState(0);
   const [arrayTierra, setArrayTierra] = useState([true, false]);
 
-  console.log(posicionApiradora);
-  console.log(arrayTierra);
   return (
     <div className="App">
       <header className="App-header">
