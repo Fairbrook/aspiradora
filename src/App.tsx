@@ -1,8 +1,15 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import logo from "./logo.svg";
+import "./App.css";
+import Modal from "./Components/modal";
 
 function App() {
+  const [open, setOpen] = useState(true);
+  const [posicionApiradora, setPosicionAspiradora] = useState(0);
+  const [arrayTierra, setArrayTierra] = useState([true, false]);
+
+  console.log(posicionApiradora);
+  console.log(arrayTierra);
   return (
     <div className="App">
       <header className="App-header">
@@ -18,7 +25,21 @@ function App() {
         >
           Learn React
         </a>
+        <button
+          className="bg-blue-500 rounded-sm p-3"
+          onClick={() => setOpen(true)}
+        >
+          Mostrar configuracion
+        </button>
       </header>
+      <Modal
+        open={open}
+        setOpen={(value) => setOpen(value)}
+        posicionAspiradora={posicionApiradora}
+        setPosicionAspiradora={(value) => setPosicionAspiradora(value)}
+        arrayTierra={arrayTierra}
+        setArrayTierra={(value) => setArrayTierra(value)}
+      />
     </div>
   );
 }
