@@ -1,42 +1,32 @@
 import React, { useState } from "react";
-import logo from "./logo.svg";
 import "./App.css";
-import Modal from "./Components/modal";
+import Configuration from "types/Configuration";
+import ConfigurationModal from "components/molecules/ConfigurationModal";
+import Scene from "components/organisms/Scene";
 
 function App() {
-  const [open, setOpen] = useState(true);
-  const [posicionApiradora, setPosicionAspiradora] = useState(0);
-  const [arrayTierra, setArrayTierra] = useState([true, false]);
+  const [open, setOpen] = useState<boolean>(false);
+  const [config, setConfig] = useState<Configuration>({
+    position: false,
+    dirt: [],
+  });
 
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <Scene config={config} />
         <button
-          className="bg-blue-500 rounded-sm p-3"
+          className="bg-blue-500 rounded-sm p-3 absolute bottom-3"
           onClick={() => setOpen(true)}
         >
           Mostrar configuracion
         </button>
       </header>
-      <Modal
+      <ConfigurationModal
         open={open}
-        setOpen={(value) => setOpen(value)}
-        posicionAspiradora={posicionApiradora}
-        setPosicionAspiradora={(value) => setPosicionAspiradora(value)}
-        arrayTierra={arrayTierra}
-        setArrayTierra={(value) => setArrayTierra(value)}
+        setOpen={setOpen}
+        config={config}
+        setConfig={setConfig}
       />
     </div>
   );
