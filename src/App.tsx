@@ -19,7 +19,7 @@ function App() {
           className="bg-blue-500 rounded-sm p-3 absolute bottom-3"
           onClick={() => setOpen(true)}
         >
-          Mostrar configuracion
+          Mostrar configuración
         </button>
       </header>
       <ConfigurationModal

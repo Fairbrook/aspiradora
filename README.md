@@ -10,6 +10,7 @@ Este proyecto fue desarrollado para la clase de Seminario de Inteligencia Artifi
 |[CRA](https://create-react-app.dev/)|Template para proyectos de React|
 |[Tail Wind](https://tailwindcss.com)|Framework CSS|
 |[Electron JS](https://www.electronjs.org/)|Framework para construir aplicaciones de escritorio mediante HTML, CSS y JavaScript
+|[Electron builder](https://www.electron.build/)|Asistente de distribución para Electron JS
 ## Comandos disponibles
 
 En el directorio raiz del proyecto puedes correr
@@ -36,6 +37,6 @@ Para más información [distribución](https://facebook.github.io/create-react-a
 Ejecuta la aplicación en modo de desarrollo.\
 A diferencia de `npm start` si inicia una ventana de electron
 
-### `npm run make`
+### `npm run dist`
 
-Compila la aplicación y crea un instalador.\
+Compila la aplicación y crea un ejecutable portable
