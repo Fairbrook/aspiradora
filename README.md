@@ -36,3 +36,6 @@ Para más información [distribución](https://facebook.github.io/create-react-a
 Ejecuta la aplicación en modo de desarrollo.\
 A diferencia de `npm start` si inicia una ventana de electron
 
+### `npm run make`
+
+Compila la aplicación y crea un instalador.\
