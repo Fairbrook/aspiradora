@@ -4,13 +4,14 @@ import Configuration from "types/Configuration";
 
 interface SceneProps {
   config: Configuration;
-  score: number;
 }
 
-export default function Scene({ config, score }: SceneProps) {
+export default function Scene({ config }: SceneProps) {
   return (
     <div>
-      <div className="text-gray-300 mt-2 text-left mb-2 text-lg">Score: {score}</div>
+      <div className="text-gray-300 mt-2 text-left mb-2 text-lg">
+        Score: {config.score}
+      </div>
       <div className="flex">
         <Room
           title="Habitación 1"

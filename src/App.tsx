@@ -2,23 +2,30 @@ import React, { useState } from "react";
 import "./App.css";
 import ConfigurationModal from "components/molecules/ConfigurationModal";
 import Scene from "components/organisms/Scene";
-import useEnviroment from "hooks/useEnviroment";
+import Configuration from "types/Configuration";
+import Enviroment from "types/Enviroment";
 
 function App() {
   const [open, setOpen] = useState<boolean>(false);
-  const { config, score, setConfig, clean, move, isDirty } = useEnviroment();
+  const [config, setConfig] = useState<Configuration>({
+    position: false,
+    dirt: [],
+    score: 0,
+  });
 
   function brain() {
-    if (isDirty()) clean();
-    move();
-    if (isDirty()) clean();
-    move();
+    const enviroment = new Enviroment(config);
+    if (enviroment.isDirty()) enviroment.clean();
+    enviroment.move();
+    if (enviroment.isDirty()) enviroment.clean();
+    enviroment.move();
+    setConfig({ ...enviroment.config });
   }
 
   return (
     <div className="App">
       <header className="App-header">
-        <Scene config={config} score={score} />
+        <Scene config={config} />
         <div className="absolute bottom-3">
           <button
             className="bg-blue-500 rounded-sm p-3 mr-3"

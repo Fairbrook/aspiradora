@@ -32,7 +32,7 @@ export default function ConfigurationModal({
       setData((d) => {
         const dirt = [...d.dirt];
         dirt[index] = hasDirt;
-        return { position: d.position, dirt };
+        return { position: d.position, dirt, score: 0 };
       }),
     []
   );
@@ -65,7 +65,10 @@ export default function ConfigurationModal({
                 checked={!data.position}
                 onChange={({ target }) => setPosition(!target.checked)}
               />
-              <label htmlFor="left-vacuum" className="form-check-label inline-block text-gray-800">
+              <label
+                htmlFor="left-vacuum"
+                className="form-check-label inline-block text-gray-800"
+              >
                 Izquierda
               </label>
             </div>
@@ -79,7 +82,10 @@ export default function ConfigurationModal({
                 checked={data.position}
                 onChange={({ target }) => setPosition(target.checked)}
               />
-              <label htmlFor="right-vacuum" className="form-check-label inline-block text-gray-800">
+              <label
+                htmlFor="right-vacuum"
+                className="form-check-label inline-block text-gray-800"
+              >
                 Derecha
               </label>
             </div>
@@ -96,7 +102,10 @@ export default function ConfigurationModal({
                 id="left-dirt"
                 onChange={({ target }) => setDirt(0, target.checked)}
               />
-              <label htmlFor="left-dirt" className="form-check-label inline-block text-gray-800 ml-1">
+              <label
+                htmlFor="left-dirt"
+                className="form-check-label inline-block text-gray-800 ml-1"
+              >
                 Izquierda
               </label>
             </div>
