@@ -6,7 +6,14 @@ import useEnviroment from "hooks/useEnviroment";
 
 function App() {
   const [open, setOpen] = useState<boolean>(false);
-  const { config, score, setConfig } = useEnviroment();
+  const { config, score, setConfig, clean, move, isDirty } = useEnviroment();
+
+  function brain() {
+    if (isDirty()) clean();
+    move();
+    if (isDirty()) clean();
+    move();
+  }
 
   return (
     <div className="App">
@@ -21,7 +28,7 @@ function App() {
           </button>
           <button
             className="bg-green-600 rounded-sm p-3"
-            onClick={() => setOpen(true)}
+            onClick={() => brain()}
           >
             Empezar
           </button>

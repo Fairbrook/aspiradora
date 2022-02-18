@@ -21,5 +21,11 @@ export default function useEnviroment() {
     setConfig({ ...config, dirt: _dirt });
   }, [config]);
 
-  return { setConfig, score, config, move, clean };
+  const isDirty = useCallback(() => {
+    const index = !config.position ? 0 : 1;
+    const _dirt = [...config.dirt];
+    return _dirt[index];
+  }, [config]);
+
+  return { setConfig, score, config, move, clean, isDirty };
 }
