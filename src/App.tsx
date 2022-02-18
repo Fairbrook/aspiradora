@@ -4,6 +4,7 @@ import ConfigurationModal from "components/molecules/ConfigurationModal";
 import Scene from "components/organisms/Scene";
 import Configuration from "types/Configuration";
 import Enviroment from "types/Enviroment";
+import delay from "utils/delay";
 
 function App() {
   const [open, setOpen] = useState<boolean>(false);
@@ -13,12 +14,23 @@ function App() {
     score: 0,
   });
 
-  function brain() {
+  async function brain() {
     const enviroment = new Enviroment(config);
-    if (enviroment.isDirty()) enviroment.clean();
+    if (enviroment.isDirty()) {
+      enviroment.clean();
+      await delay();
+      setConfig({ ...enviroment.config });
+    }
     enviroment.move();
-    if (enviroment.isDirty()) enviroment.clean();
+    await delay();
+    setConfig({ ...enviroment.config });
+    if (enviroment.isDirty()) {
+      enviroment.clean();
+      await delay();
+      setConfig({ ...enviroment.config });
+    }
     enviroment.move();
+    await delay();
     setConfig({ ...enviroment.config });
   }
 
