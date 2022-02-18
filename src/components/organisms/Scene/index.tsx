@@ -4,9 +4,10 @@ import Configuration from "types/Configuration";
 
 interface SceneProps {
   config: Configuration;
+  status: string;
 }
 
-export default function Scene({ config }: SceneProps) {
+export default function Scene({ config, status }: SceneProps) {
   return (
     <div>
       <div className="text-gray-300 mt-2 text-left mb-2 text-lg">
@@ -23,6 +24,9 @@ export default function Scene({ config }: SceneProps) {
           hasDirt={config.dirt[1]}
           hasVacuum={config.position}
         />
+      </div>
+      <div className="text-gray-300 mt-8 text-center text-lg">
+        Estado: {status}
       </div>
     </div>
   );

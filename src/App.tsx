@@ -13,31 +13,34 @@ function App() {
     dirt: [],
     score: 0,
   });
+  const [status, setStatus] = useState<string>("Inactivo");
 
   async function brain() {
     const enviroment = new Enviroment(config);
+    setConfig(enviroment.copyConfig());
     if (enviroment.isDirty()) {
-      enviroment.clean();
+      setStatus("Aspirando");
       await delay();
-      setConfig({ ...enviroment.config });
+      setConfig(enviroment.clean());
     }
-    enviroment.move();
+    setStatus("Moviendose");
     await delay();
-    setConfig({ ...enviroment.config });
+    setConfig(enviroment.move());
     if (enviroment.isDirty()) {
-      enviroment.clean();
+      setStatus("Aspirando");
       await delay();
-      setConfig({ ...enviroment.config });
+      setConfig(enviroment.clean());
     }
-    enviroment.move();
+    setStatus("Moviendose");
     await delay();
-    setConfig({ ...enviroment.config });
+    setConfig(enviroment.move());
+    setStatus("Listo");
   }
 
   return (
     <div className="App">
       <header className="App-header">
-        <Scene config={config} />
+        <Scene config={config} status={status} />
         <div className="absolute bottom-3">
           <button
             className="bg-blue-500 rounded-sm p-3 mr-3"
